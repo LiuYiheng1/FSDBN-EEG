@@ -11,8 +11,8 @@ from transformers import Blip2Processor, Blip2ForConditionalGeneration
 
 
 # ================== 配置 ==================
-IMAGE_ROOT = r"D:\pycharmproject\Uncertainty-aware-Blur-Prior-main\data\things-meg\Image_set"
-OUTPUT_JSON = r"D:\pycharmproject\Uncertainty-aware-Blur-Prior-main\weights\event_captions_blip2.json"
+IMAGE_ROOT = r"\data\things-meg\Image_set"
+OUTPUT_JSON = r"\weights\event_captions_blip2.json"
 
 MAX_NEW_TOKENS = 20
 BATCH_SIZE = 1  # BLIP-2 不支持多图 batch，设为 1
@@ -20,7 +20,7 @@ BATCH_SIZE = 1  # BLIP-2 不支持多图 batch，设为 1
 
 device = "cuda" if torch.cuda.is_available() else "cpu"
 print(f"Using device: {device}")
-LOCAL_MODEL_PATH = r"D:\pycharmproject\Uncertainty-aware-Blur-Prior-main\models\blip2-opt-2.7b"
+LOCAL_MODEL_PATH = r"\models\blip2-opt-2.7b"
 
 processor = Blip2Processor.from_pretrained(LOCAL_MODEL_PATH)
 model = Blip2ForConditionalGeneration.from_pretrained(
@@ -86,5 +86,6 @@ for path, cap in tqdm(captions.items(), desc="SBERT encoding"):
 sb_pt = OUTPUT_JSON.replace("event_captions_blip2.json", "caption_sbert384.pt")
 torch.save(sbert_vecs, sb_pt)
 print(f"✅ Saved SBERT vectors to {sb_pt}")
+
 
 
