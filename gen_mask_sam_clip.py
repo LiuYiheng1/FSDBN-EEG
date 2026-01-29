@@ -13,7 +13,7 @@ from MobileSAM.mobile_sam import sam_model_registry, SamAutomaticMaskGenerator
 from clipmain.clipset import clip
 
 # ====== 配置路径 ======
-IMG_ROOT = r"D:\pycharmproject\Uncertainty-aware-Blur-Prior-main\data\things-eeg\Image_set"
+IMG_ROOT = r"\data\things-eeg\Image_set"
 MASK_DIR = "weights/masks_sam_clip"  # 新目录，避免覆盖旧掩码
 os.makedirs(MASK_DIR, exist_ok=True)
 
@@ -134,5 +134,6 @@ for split in ["training_images", "test_images"]:
                 print(f"❌ 完全失败: {img_path} | {e}")
 
 print(f"✅ 全部完成！共生成 {total_masks} 个高质量前景掩码。")
+
 
 
